@@ -1,0 +1,36 @@
+*, 
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+    //this one defines a rem
+	font-size: 62.5%; //10px
+
+	// @include respond(phone) {
+	// 	font-size: 50%;//8px--> meaning 0.5em meaning 50%
+	// }
+	
+	@include respond(tab-land) {
+		font-size: 56.25%;//9px--> meaning 0.5625em meaning 56.25%
+	}
+
+	@include respond(tab-port) {
+		font-size: 50%;//8px--> meaning 0.5em meaning 50%
+	}
+
+	@include respond(big-desktop) {
+		font-size: 75%;//12px--> meaning 0.75em meaning 75%
+	}
+}
+body {
+	box-sizing: border-box;
+	padding: 3rem;
+
+	@include respond(tab-port) {
+		padding: 0;
+	}
+}

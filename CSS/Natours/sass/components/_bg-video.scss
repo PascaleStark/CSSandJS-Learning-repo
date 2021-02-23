@@ -1,0 +1,16 @@
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.15;
+    overflow: hidden;
+
+    &__content {
+        height: 100%;
+        width: 100%;
+        object-fit: cover; //the part of the video that does not fit is clipped. It works in the same way of background-images size but with html elements here which is the video --> occupy the section space while maintaining the aspect ratio. Other values are fill (does not maintain the aspect ratio) and contain (tries to fill the parent element and not clipping).
+    }
+}

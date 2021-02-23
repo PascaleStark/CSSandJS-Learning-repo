@@ -1,0 +1,78 @@
+.btn {
+	&,
+	&:link,
+	&:visited {
+		text-transform: uppercase;
+		text-decoration: none;
+		border-radius: 10rem;
+		padding: 1.5rem 4rem;
+		display: inline-block; /*because a button is an inline element that is why it is treated as a text*/
+		transition: all .2s; /*transition is applied on the initial state, it is used to slow things down*/
+
+		/*with respect to btn::after element*/
+		position: relative;
+		/*animation: moveInBottom 1.5s ease; he added it to the */
+		font-size: 16px;
+
+		//styling the button
+		border: none;
+		cursor: pointer;
+	}
+
+	&:hover {
+		transform: translateY(-.3rem);
+		box-shadow: 0 1rem 2rem rgba($color-black, .2); /*the higher the blur the farthest the look*/
+
+			/*Because I want it to only appear at hover*/
+		&::after {
+			transform: scale(1.4, 1.6);
+			opacity: 0;
+	}
+		}
+
+	&:active,
+	&:focus {
+		outline: none;
+		transform: translateY(-.1rem); /*-1 with respect to the initial state and not the hover*/
+		box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+	}
+
+	&--white {
+		color: $color-grey-dark;
+		background-color: $color-white;
+
+		&::after {
+			background-color: $color-white;
+		}
+	}
+	&--green {
+		color: $color-white;
+		background-color: $color-medium-green;
+
+		&::after {
+			background-color: $color-white;
+	}
+	}
+
+	&::after { /*we r adding a new button that appears at the moment we click the btn and then 		disappers*/
+		content: ""; /*must specify content or it won't show*/
+		display: inline-block; /*also must be specified*/
+		height: 100%; /*of the size of the element*/
+		width: 100%; 
+		border-radius: 10rem;
+		/*until now, the child btn is within the original one, we need to use position to fix it*/
+		position: absolute;
+		top: 0;
+		left: 0;
+		/*it shows in front of the original, so we use z-index -1*/
+		z-index: -1;
+		transition: all .4s;
+}
+
+	&--animated {
+		animation: moveInBottom .5s ease-out .75s;
+		animation-fill-mode: backwards; /*this is to make sure that the btn does not show before the animation
+		and display the 0% settings on loading "had the animation been applied right on the btn link visited, we would
+		not have this problem, however IT IS NOT PRACTICAL so we use this fix"*/
+}
+}

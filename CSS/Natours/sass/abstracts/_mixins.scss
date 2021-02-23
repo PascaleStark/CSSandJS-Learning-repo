@@ -1,0 +1,47 @@
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin absCenter {
+    position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+}
+
+//Media query center
+//keep in mind the following breakpoints
+//phone  --> less than 600px  --> phone
+//tablet portrait --> less than 900px --> tab-port
+//tablet landscape --> less than 1200px  --> tab-land
+//normal desktop viewport [1200-1800]
+//big desktop --> more than 1800px --> big-desktop
+
+//we are using the @content directive to pass on properties and values (specific styles)
+//we are using the @if directive to pass on size
+//we are using em instead of rem and doing the calculation with respect to browser set font-size of 16px
+
+//ORDER: base + typography > general layout + grid > components
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media (max-width: 37.5em) { @content }; //600px means 600/16=37.5em
+    }
+
+    @if $breakpoint == tab-port {
+        @media (max-width: 56.25em) { @content }; //900px means 900/16=56.25em
+    }
+
+    @if $breakpoint == tab-land {
+        @media (max-width: 75em) { @content }; //1200px means 1200/16=75em
+    }
+
+    @if $breakpoint == big-desktop {
+        @media (min-width: 112.5em) { @content }; //1800px means 1800/16=112.5em
+    }
+}
+

@@ -1,0 +1,26 @@
+.btn-text {
+
+    &:link, 
+    &:visited {
+        font-size: 1.6rem;
+        text-decoration: none;
+        color: $color-medium-green;
+        display: inline-block;
+        border-bottom: 1px solid $color-light-green;
+        padding: 3px;
+        transition: all .2s;
+        
+    }
+
+    &:hover {
+        background-color: $color-medium-green;
+        color: white;
+        transform: translateY(-.2rem);
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+    }
+
+    &:active {
+        transform: translateY(0);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+    }
+}

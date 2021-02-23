@@ -1,0 +1,51 @@
+.header {
+	position: relative;
+	height: 85vh; //***so that the user knows that there is content below
+	background-image: linear-gradient(
+		to right bottom, 
+		rgba($color-medium-green, 0.8), 
+		rgba($color-dark-green, 0.8)), 
+	    url(../img/hero.jpg); /*first is on top, second is below it*/
+	background-size: cover;
+	background-position: top;
+	
+
+	@supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+		-webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+		clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /*check clippy css path maker*/
+		height: 95vh;//***
+	}
+
+	@media (min-resolution: 192dpi) and (min-width: 37.5em), //600px, coma is or
+	       (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), //for safari
+	(min-width: 125em) { //2000px
+	background-image: linear-gradient(to right bottom,
+	rgba($color-medium-green, 0.8),
+	rgba($color-dark-green, 0.8)),
+	url(../img/hero.jpg);
+	}
+
+	@include respond(phone) {
+		-webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+		clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%); /*check clippy css path maker*/
+	}
+
+
+	&__logo-box {
+		position: absolute;
+		top: 4rem;
+		left: 4rem;
+	}
+	
+	&__img-logo {
+		height: 3.5rem;
+	}
+	
+	&__text-box {
+		position: absolute;
+		top: 40%;
+		left: 50%; /*with respect to the parent element or header*/
+		transform: translate(-50%, -50%); /*these 50% represent 50% of the width and height of the element text-box*/
+		text-align: center;
+	}
+}
